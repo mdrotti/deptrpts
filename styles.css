@@ -1,7 +1,7 @@
 #page-local-deptrpts-index .custom-select{
 	width: 100% !important;
-      
-    }
+	
+}
 
 #page-local-deptrpts-index .icon-collapse{
 	float: right;
@@ -13,9 +13,9 @@
 #page-local-deptrpts-index a:focus{
 	box-shadow: none !important;
 }
-#page-local-deptrpts-index #accordion a{
+/*#page-local-deptrpts-index #accordion a{
 	color: white !important;
-}  
+	} */ 
 
 
 #page-local-deptrpts-index .select2-selection__arrow{
@@ -28,7 +28,7 @@
 }
 
 .topcard{
-	font-size: 25px;
+	font-size: 22px;
 }
 
 #page-local-deptrpts-index .pagination button{
@@ -36,4 +36,83 @@
 	color: blue;
 	cursor: pointer !important;
 	margin: 5px !important;
+}
+
+#page-local-deptrpts-index #report_table1{
+	font-size: 12px !important;
+}
+
+#page-local-deptrpts-index #course_table1{
+	font-size: 12px !important;
+}
+
+#page-local-deptrpts-index i.fa.fa-envelope{
+	color: blue !important;
+	font-size: medium;
+	cursor: pointer !important;
+}
+
+#page-local-deptrpts-index #accordion{
+	width: 100%;
+}
+
+#page-local-deptrpts-index #ajaxresult .card-header{
+	height: 100px !important;
+}
+
+#page-local-deptrpts-index #hideshow{
+	margin-bottom: 5px;
+}
+
+
+#page-local-deptrpts-index #ajaxresult .card{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+}
+#page-local-deptrpts-index .gradient-deepblue {
+    background: #6a11cb;
+    background: -webkit-linear-gradient(45deg, #6a11cb, #2575fc)!important;
+    background: linear-gradient(45deg, #6a11cb , #2575fc)!important;
+}
+#page-local-deptrpts-index .gradient-orange {
+    background: #fc4a1a;
+    background: -webkit-linear-gradient(45deg, #fc4a1a, #f7b733)!important;
+    background: linear-gradient(45deg, #fc4a1a, #f7b733)!important;
+}
+#page-local-deptrpts-index .gradient-ohhappiness {
+    background: #00b09b;
+    background: -webkit-linear-gradient(45deg, #00b09b, #96c93d)!important;
+    background: linear-gradient(45deg, #00b09b, #96c93d)!important;
+}
+
+#page-local-deptrpts-index .gradient-ibiza {
+    background: #ee0979;
+    background: -webkit-linear-gradient(45deg, #ee0979, #ff6a00)!important;
+    background: linear-gradient(45deg, #ee0979, #ff6a00)!important;
+}
+
+#page-local-deptrpts-index #region-main{
+	background-color: #f8fafa !important;
+}
+
+#page-local-deptrpts-index .panel-heading{
+	border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+}
+
+#page-local-deptrpts-index .select_dates{
+	display: block !important; 
+	overflow: hidden !important;
+}
+
+#page-local-deptrpts-index #accordion a{
+	color: white !important;
+}
+
+#page-local-deptrpts-index #accordion .panel-heading{
+	background-color: #17a2b8 !important;
+}
+
+#page-local-deptrpts-subcategoryview .subcat-id{
+	display: none;
 }

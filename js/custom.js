@@ -22,7 +22,6 @@ $(document).ready(function () {
     });
  });
 
-
 $(document).ready(function() {
 	var startdate ='';
     $("#start-date-input").change(function(event) {
@@ -60,6 +59,18 @@ $(document).ready(function() {
     filter_data(status);
     });
 
+  var siterole ='';
+    $("#site-role").change(function(event) {
+    var status = "siterole";
+    filter_data(status);
+    });
+
+  var sitedepartment ='';
+    $("#site-dept").change(function(event) {
+    var status = "sitedepartment";
+    filter_data(status);
+    });
+
 	var usersearch ='';
     $("#usersearch").change(function(event) {
     var status = "usersearch";
@@ -84,7 +95,14 @@ $(document).ready(function() {
     var status = "allusers";
     filter_data(status);
     });
+ 
 });
+
+
+// function searchfun(){
+//   var status = "search";
+//   filter_data(status);
+// }
 
 function filter_data(status){
 
@@ -110,6 +128,11 @@ function filter_data(status){
     var sitecategory ='';
     var sitecategory = $("#site-category").val();
  
+    var siterole ='';
+    var siterole = $("#site-role").val();
+
+    var sitedepartment ='';
+    var sitedepartment = $("#site-dept").val();
 
     var usersearch ='';
     var usersearch = $("#usersearch").val();
@@ -118,10 +141,13 @@ function filter_data(status){
     var coursesearch ='';
     var coursesearch = $("#coursesearch").val();
 
+    // var tblsearch ='';
+    // var tblsearch = $("#tablesearch").val();
+
     $.ajax({ 
         url: M.cfg.wwwroot+"/local/deptrpts/ajax.php",
         data:{status:status,startdate:startdate,enddate:enddate,sitelocation:sitelocation,userlocation:userlocation,
-        courselocation:courselocation,sitecategory:sitecategory,usersearch:usersearch, coursesearch:coursesearch},
+        courselocation:courselocation,sitecategory:sitecategory,usersearch:usersearch, coursesearch:coursesearch, siterole:siterole, sitedepartment:sitedepartment},
         type: "POST",
         success: function(data){
             $('#ajaxresult').html(data);
@@ -239,10 +265,8 @@ $(function() {
 });
 
 
-
-
-
-
-
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
 
 

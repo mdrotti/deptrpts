@@ -1,45 +1,54 @@
-
-<script src="{{{ config.wwwroot}}}/local/deptrpts/js/jquery.dataTables.min.js"> </script>
-<link href="{{{ config.wwwroot}}}/local/deptrpts/css/jquery.dataTables.min.css"> </link>
-
 <div class="container-fluid">
 	<div class="row">
 
-		<div class="col-md-2 border border-dark bg-dark">
+		<div  id="filter-section" class="col-md-2">
 
-			<div class="form-group row ">
-				<div class="col-md-12 text-center"><label for="example-date-input" class="col-form-label text-white">Start Date</label></div>
-					<div class="col-12">
-					<input id="start-date-input" class="form-control" type="date">
-					</div>
+			<!-- <div class="form-group row">
+			<div class="text-center text-dark">
+				<span class="text-danger">*&nbsp;</span>
+				<small>{{#str}}startdateandendate,local_deptrpts{{/str}}</small>
 			</div>
+				 <div class="col-md-12 text-center">
+					<label for="example-date-input" class="col-form-label"><b>{{#str}}startdate,local_deptrpts{{/str}}</b>
+					</label>
+				</div>
+				<div class="col-12">
+				<input id="start-date-input" class="form-control" type="date">
+				</div> 
+			</div> 
 
-			<div class="form-group row">
-				<div class="col-md-12 text-center"><label for="exmple-date-input" class="col-form-label text-white">End Date</label></div>
-					<div class="col-12">
+			 <div class="form-group row">
+				<div class="col-md-12 text-center">
+					<label for="exmple-date-input" class="col-form-label"><b>{{#str}}enddate,local_deptrpts{{/str}}</b>
+					</label>
+				</div>
+				<div class="col-12">
 					<input id="end-date-input" class="form-control" type="date">
-					</div>
-			</div>
-
+				</div>
+			</div> -->
+		<div class="form-group row">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			{{#filters}}
 	    		{{#hasfilter}}
 				    <div class="panel panel-default">
-
-						<div class="panel-heading" role="tab" id="{{headingid}}">
+						<div class="panel-heading p-2 bg-dark" role="tab" id="{{headingid}}">
 							<h5 class="panel-title">
 								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{href}}" aria-expanded="true" aria-controls="{{href}}">
-									<i class="fa fa-minus icon-collapse" aria-hidden="true"></i>
+									<i class="fa fa-chevron-circle-down float-right {{headingid}}" aria-hidden="true"></i>
 										{{{icon}}}&nbsp;&nbsp;{{filtertitle}}
 								</a>
 							</h5>
 						</div>
 
-						<div id="{{href}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{headingid}}">
+						<div id="{{href}}" class="panel-collapse collapse p-1" role="tabpanel" aria-labelledby="{{headingid}}">
 							<div class="panel-body">
+					<div class="text-center">
+					<span class="text-danger">*&nbsp;</span>
+					<small>{{sectionhelptxt}}</small>
+					</div>
 								{{#input1title}}				
 								<div class="form-group row">
-									<div class="col-md-12 text-center"><label for="exmple-date-input" class="col-form-label text-white">{{input1title}}</label></div>
+									<div class="col-md-12 text-left"><label for="exmple-date-input" class="col-form-label"><b>{{input1title}}</b></label></div>
 										<div class="col-12 text-center">
 										<select id ={{input1id}} class ="custom-select">
 										{{{input1html}}}
@@ -49,18 +58,34 @@
 								{{/input1title}}
 								{{#input2title}}
 								<div class="form-group row">
-									<div class="col-md-12 text-center"><label for="exmple-date-input" class="col-form-label text-white">{{input2title}}</label></div>
+									<div class="col-md-12 text-left"><label for="exmple-date-input" class="col-form-label"><b>{{input2title}}</b></label></div>
 										<div class="col-12 text-center">
 										{{{input2html}}}
 										</div>
 								</div>
 								{{/input2title}}
+								{{#input3title}}
+								<div class="form-group row">
+									<div class="col-md-12 text-left"><label for="exmple-date-input" class="col-form-label"><b>{{input3title}}</b></label></div>
+										<div class="col-12 text-center">
+										{{{input3html}}}
+										</div>
+								</div>
+								{{/input3title}}
+								{{#input4title}}
+								<div class="form-group row">
+									<div class="col-md-12 text-left"><label for="exmple-date-input" class="col-form-label"><b>{{input4title}}</b></label></div>
+										<div class="col-12 text-center">
+										{{{input4html}}}
+										</div>
+								</div>
+								{{/input4title}}
 								{{#button1title}}
 								<div class="form-group row">
 									<div class="col-md-12 text-center">
 									</div>
 										<div class="col-12 text-center">
-										<button id="{{buttonid1}}" type="button" class="btn btn-light rounded">{{{button1title}}}</button>
+										<button id="{{buttonid1}}" type="button" class="btn btn-success rounded"><small>{{{button1title}}}</small></button>
 										</div>
 								</div>
 								{{/button1title}}
@@ -71,9 +96,26 @@
 	    		{{/hasfilter}}
 	    	{{/filters}}
 	    	</div>
+	    	</div>
 		</div>
 
-		<div class="col-md-10">
+		<div id="result_right" class="col-md-10">
+
+		<div class="row pb-1">
+			<div class="col-md-4"><button id="hideshow" value="hide/show"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></div>
+			<div class="col-md-4">
+				<label for="example-date-input" class="col-form-label float-left p-2"><b>{{#str}}startdate,local_deptrpts{{/str}}</b></label>
+				<span class="select_dates">
+				<input id="start-date-input" class="form-control" type="date"></span>
+			</div>
+			<div class="col-md-4">
+				<label for="exmple-date-input" class="col-form-label float-left p-2"><b>{{#str}}enddate,local_deptrpts{{/str}}</b></label>
+				<span class="select_dates"><input id="end-date-input" class="form-control" type="date"></span>
+			</div>
+		</div>
+
+		<!-- <button id="hideshow" value="hide/show"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> -->
+		<hr class="new1">
 			<div class="container">
 			<div class="row" id="ajaxresult">
 			</div>
@@ -136,4 +178,101 @@ $(document).ready(function(){
       }
     })
 });
+
+function myFunction() {
+
+}
+     $("#hideshow").click(function(event) {
+   var x = document.getElementById("filter-section");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+        $("#hideshow i").removeClass("fa-arrow-right");
+    $("#hideshow i").addClass("fa-arrow-left");
+        $("#result_right").removeClass("col-md-12");
+    $("#result_right").addClass("col-md-10");
+  } else {
+    x.style.display = "none";
+        $("#hideshow i").removeClass("fa-arrow-left");
+    $("#hideshow i").addClass("fa-arrow-right");
+        $("#result_right").removeClass("col-md-10");
+    $("#result_right").addClass("col-md-12");
+  }
+    });
 </script>
+<script>
+$('#headingOne a').click(function(event){
+	var className = $('#headingOne a').attr('class');
+	if(className =="collapsed"){
+			$("#headingOne .headingOne").removeClass("fa-chevron-circle-right");
+	    $("#headingOne .headingOne").addClass("fa-chevron-circle-down");
+	}else{
+	    $("#headingOne .headingOne").removeClass("fa-chevron-circle-down");
+	    $("#headingOne .headingOne").addClass("fa-chevron-circle-right");
+	}
+});
+$('#headingTwo a').click(function(event){
+	var className = $('#headingTwo a').attr('class');
+	if(className =="collapsed"){
+			$("#headingTwo .headingTwo").removeClass("fa-chevron-circle-right");
+	    $("#headingTwo .headingTwo").addClass("fa-chevron-circle-down");
+	}else{
+	    $("#headingTwo .headingTwo").removeClass("fa-chevron-circle-down");
+	    $("#headingTwo .headingTwo").addClass("fa-chevron-circle-right");
+	}
+});
+$('#headingThree a').click(function(event){
+	var className = $('#headingThree a').attr('class');
+	if(className =="collapsed"){
+			$("#headingThree .headingThree").removeClass("fa-chevron-circle-right");
+	    $("#headingThree .headingThree").addClass("fa-chevron-circle-down");
+	}else{
+	    $("#headingThree .headingThree").removeClass("fa-chevron-circle-down");
+	    $("#headingThree .headingThree").addClass("fa-chevron-circle-right");
+	}
+});
+$('#headingFour a').click(function(event){
+	var className = $('#headingFour a').attr('class');
+	if(className =="collapsed"){
+			$("#headingFour .headingFour").removeClass("fa-chevron-circle-right");
+	    $("#headingFour .headingFour").addClass("fa-chevron-circle-down");
+	}else{
+	    $("#headingFour .headingFour").removeClass("fa-chevron-circle-down");
+	    $("#headingFour .headingFour").addClass("fa-chevron-circle-right");
+	}
+});
+$('#headingFive a').click(function(event){
+	var className = $('#headingFive a').attr('class');
+	if(className =="collapsed"){
+			$("#headingFive .headingFive").removeClass("fa-chevron-circle-right");
+	    $("#headingFive .headingFive").addClass("fa-chevron-circle-down");
+	}else{
+	    $("#headingFive .headingFive").removeClass("fa-chevron-circle-down");
+	    $("#headingFive .headingFive").addClass("fa-chevron-circle-right");
+	}
+});
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Notify User</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+      <textarea id="w3review" name="w3review" rows="4" cols="40">
+      Enter your message here..
+      </textarea>       
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Send</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

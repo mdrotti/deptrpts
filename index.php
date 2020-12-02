@@ -27,7 +27,7 @@ global $DB,$CFG,$USER, $SESSION,$OUTPUT;
 //require_login(true);
 $context = context_system::instance();
 $PAGE->set_context($context);
-$PAGE->set_pagelayout('admin');
+$PAGE->set_pagelayout('standard');
 $PAGE->set_url($CFG->wwwroot . '/local/deptrpts/index.php');
 $title = get_string('title','local_deptrpts');
 $PAGE->navbar->add($title);

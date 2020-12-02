@@ -1,8 +1,8 @@
 <?php
 require_once('../../config.php');
+global $DB,$CFG,$PAGE;
 require_once('lib.php');
-require_once("$CFG->libdir/excellib.class.php");
-global $DB,$CFG;
+require_once($CFG->libdir.'/excellib.class.php');
 
 $context = context_system::instance();
 $PAGE->set_context($context);
@@ -15,19 +15,20 @@ $userid = optional_param('userselect','',PARAM_RAW);
 $courseloc = optional_param('clocation','',PARAM_RAW);
 $courseid = optional_param('coursename','',PARAM_RAW);
 $status = optional_param('status','',PARAM_RAW);
+
+
 $rownum = 1;
 if($status === "site"){
-
- $result=site_export($startdate,$enddate,$siteloc,$sitecat);
+	$result = site_export($startdate,$enddate,$siteloc,$sitecat);
 	$filename = "textexcel.xls";
 // Creating a workbook.
 	$workbook = new \MoodleExcelWorkbook("-");
 // Sending HTTP headers.
 	$workbook->send($filename);
 // Creating the first worksheet.
-	$sheettitle = get_string('report', 'scorm');
+	$sheettitle = get_string('report', 'local_deptrpts');
 	$myxls = $workbook->add_worksheet($sheettitle);
-    // Format types.
+// Format types.
 	$format = $workbook->add_format();
 	$format->set_bold(0);
 	$formatbc = $workbook->add_format();
@@ -49,13 +50,14 @@ if($status === "site"){
 	$formatg->set_align('center');
 	$colnum = 0;
 	$headers=array(get_string('serial','local_deptrpts'),
-					get_string('fullname','local_deptrpts'),
-					get_string('email','local_deptrpts'),
-					get_string('coursename','local_deptrpts'),
-					get_string('enrolmentdate','local_deptrpts'),
-					get_string('completiondate','local_deptrpts'),
-					get_string('completionstatus','local_deptrpts'),
-					get_string('coursegrade','local_deptrpts'));
+		get_string('fullname','local_deptrpts'),
+		get_string('email','local_deptrpts'),
+		get_string('coursename','local_deptrpts'),
+		get_string('enrolmentdate','local_deptrpts'),
+		get_string('completiondate','local_deptrpts'),
+		get_string('completionstatus','local_deptrpts'),
+		get_string('coursegrade','local_deptrpts'),
+		get_string('action','local_deptrpts'));
 	foreach ($headers as $item) {
 		$myxls->write(0, $colnum, $item, $formatbc);
 		$colnum++;
@@ -78,7 +80,7 @@ if($status === "site"){
 
 }else if($status === "user") {
 
-$result=user_exceldownload($startdate,$enddate,$userloc,$userid);
+	$result=user_exceldownload($startdate,$enddate,$userloc,$userid);
 	$filename = "textexcel.xls";
 // Creating a workbook.
 	$workbook = new \MoodleExcelWorkbook("-");
@@ -109,13 +111,13 @@ $result=user_exceldownload($startdate,$enddate,$userloc,$userid);
 	$formatg->set_align('center');
 	$colnum = 0;
 	$headers=array(get_string('serial','local_deptrpts'),
-					get_string('fullname','local_deptrpts'),
-					get_string('email','local_deptrpts'),
-					get_string('coursename','local_deptrpts'),
-					get_string('enrolmentdate','local_deptrpts'),
-					get_string('completiondate','local_deptrpts'),
-					get_string('completionstatus','local_deptrpts'),
-					get_string('coursegrade','local_deptrpts'));
+		get_string('fullname','local_deptrpts'),
+		get_string('email','local_deptrpts'),
+		get_string('coursename','local_deptrpts'),
+		get_string('enrolmentdate','local_deptrpts'),
+		get_string('completiondate','local_deptrpts'),
+		get_string('completionstatus','local_deptrpts'),
+		get_string('coursegrade','local_deptrpts'));
 	foreach ($headers as $item) {
 		$myxls->write(0, $colnum, $item, $formatbc);
 		$colnum++;
@@ -137,8 +139,8 @@ $result=user_exceldownload($startdate,$enddate,$userloc,$userid);
 
 }else if($status == "course") {
 
-$result=course_data_table($startdate,$enddate,$courseloc,$courseid);
-$coursetbl=course_data_tbl($startdate,$enddate,$courseloc,$courseid);
+	$result=course_data_table($startdate,$enddate,$courseloc,$courseid);
+	$coursetbl=course_data_tbl($startdate,$enddate,$courseloc,$courseid);
 	$filename = "textexcel.xls";
 // Creating a workbook.
 	$workbook = new \MoodleExcelWorkbook("-");

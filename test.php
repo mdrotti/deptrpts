@@ -26,6 +26,7 @@ require_once('lib.php');
 global $DB, $USER, $SESSION,$OUTPUT;  
 require_login(true);
 $context = context_system::instance();
+$managercap = has_capability('local/deptrpts:managerreport',$context);
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('admin');
 $PAGE->set_url($CFG->wwwroot . '/local/deptrpts/test.php');
@@ -34,14 +35,61 @@ $PAGE->navbar->add($title);
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 $PAGE->requires->jquery();
-$PAGE->requires->css(new moodle_url($CFG->wwwroot.'/local/deptrpts/css/select2.min.css'));
-$PAGE->requires->js(new moodle_url($CFG->wwwroot.'/local/deptrpts/js/select2.min.js'),true);
 echo $OUTPUT->header();
-$abc=array('a','b','c','d');
-$data="";
-foreach ($abc as $a) {
-$data.=$a;
-}
-echo $data;
-echo $OUTPUT->footer();
+// if(is_siteadmin()){
+// 	$categories=$DB->get_records('course_categories');
+// }else if($managercap){
+// //checking if the logged in user is manager or not.
+// //getting all the users under this manager.
+//   	//gettin the managersemail field id.
+// $manager=$DB->get_record_sql("SELECT id FROM {user_info_field} WHERE shortname='managersemail'");
+// //getting all the userid having curently logged in managers email id.
+// $infodata=$DB->get_records_sql("SELECT userid FROM {user_info_data} WHERE fieldid='$manager->id' AND data='$USER->email'");
+//   	//gettingall the categories related to these users.
+// $counter=1;
+// $instring="";
+// foreach ($infodata as $catkey => $catval) {
+// 	if($counter == 1){
+// 		$instring="'".$catkey."'";
+// 	}else{
+// 		$instring = $instring.","."'".$catkey."'";
+// 	}
+// 	$counter++;
+// }
+// $categories="SELECT DISTINCT(cc.name),cc.id,cc.parent
+// FROM mdl_course AS c
+// JOIN mdl_context AS ctx ON c.id = ctx.instanceid
+// JOIN mdl_role_assignments AS ra ON ra.contextid = ctx.id
+// JOIN mdl_user AS u ON u.id = ra.userid
+// JOIN mdl_course_categories AS cc ON cc.id = c.category
+// WHERE u.id in (".$instring.")";
+// $categories = $DB->get_records_sql($categories);
+// }
+// $catarray=[];
+// foreach ($categories as $catagory) {
+// 	$cparent=$catagory->parent;
+// 	if($cparent == 0){
+// 		$catarray[$catagory->id]=$catagory->name;
+// 	}else {
+// 		$cpath=$catagory->path;
+// 		$catexplode=explode('/',$cpath);
+// 		$counter=1;
+// 		$instring="";
+// 		foreach ($catexplode as $ckey => $cvalue) {
+// 			if(!empty($cvalue)){
+// 			$catname=$DB->get_record('course_categories',array('id'=>$cvalue));
+// 			$cname=$catname->name;
+// 			if($counter == 1){
+// 				$instring=$cname;
+// 			}else {
+// 				$instring = $instring.'/'.$cname;
+// 			}
+// 			$counter++;
+// 			}	
+// 		}
+// 		$catarray[$catagory->id]=$instring;
+// 	}
+// }
+// return $catarray;
 
+echo $OUTPUT->footer();

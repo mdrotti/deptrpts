@@ -1,8 +1,24 @@
-<div class="pt-5">
-<a href="{{{ config.wwwroot }}}{{dynlink}}" class="btn btn-success">{{#str}}exceldownload,local_deptrpts{{/str}}</a>
+<div class="card m-3 p-2">
+<div class="row">
+<div class="col-md-12">
+  <div class="row pl-3">
+    <h4>{{siteheading}}</h4>
+  </div>
+  <div>
+  <span class="text-danger">*&nbsp;</span>
+  <small>{{sitehelptxt}}</small>
+  </div>
 </div>
-
-<div class="form-group pt-5">
+</div>
+<!-- manju -->
+<div class="row">
+<div class="col-md-3">
+<div class="pt-3">
+<a href="{{{ config.wwwroot }}}{{dynlink}}" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group pt-3">
 	<select class="form-control" name="state" id="maxRows">
 			<option value="5000">
 			{{#str}}showallrows,local_deptrpts{{/str}}
@@ -16,18 +32,22 @@
 			<option value="100">100</option>
 	</select>
 </div>
+</div>
+</div>
+<!-- manju last -->
 <div class="col-md-12">
 	<div class="row table-responsive">
 	<table class="datatable table table-striped" id="report_table1">
 		 <thead>
 		    <tr>
-		      <th>{{#str}}fullname,local_deptrpts{{/str}}</th>
+		      <th id="username_header">{{#str}}fullname,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}email,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}coursename,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}enrolmentdate,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}completiondate,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}completionstatus,local_deptrpts{{/str}}</th>
 		      <th>{{#str}}coursegrade,local_deptrpts{{/str}}</th>
+          <th>{{#str}}action,local_deptrpts{{/str}}</th>
 		    </tr>
 	  </thead>
 	  <tbody>
@@ -40,6 +60,7 @@
 		  	<td>{{completiontime}}</td>
 		  	<td>{{completionstatus}}</td>
 		  	<td>{{coursegrade}}</td>
+        <td>{{{action}}}</td>
 		  	</tr>
 		  	{{/tabledata}}
 	  </tbody>
@@ -72,7 +93,7 @@
 			</ul>
 		</nav>
 </div>
-
+</div>
 <script>
 getPagination('#report_table1');
 function getPagination(table) {

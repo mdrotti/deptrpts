@@ -1,10 +1,35 @@
 <?php
 $string['title']='Site Dashboard';
+$string['startdateandendate']='Below startdate & enddate are common for all filter';
+$string['startdate']='Select Start Date : ';
+$string['enddate']='Select End Date : ';
+$string['siterpt']='Select below filters to view Site report';
+$string['courserpt']='Select below filter to view Course report';
+$string['userrpt']='Select below filter to view User report';
+$string['course']='Click below button to view All courses';
+$string['user']='Click below button to view All Users';
+$string['cathlptext']='All Category`s courses';
+$string['graphheadtext']='Yearwise Enollment & completion Graphs';
+$string['mgraphheadtext']='Monthwise Enollment & completion Graphs';
+$string['sitehead']='Site Report Table';
+$string['sitehelptext']='This table will display the Site Report contains user`s username,emailid,course,enrollmentdate,completiondate,course grade & status based on the filter selection. ';	
+$string['courseheading']='Course Report Table';
+$string['coursehelptext']='This table will display the Course Report contains course`s name, usesrname, all Activities related to in this course enrollment & completion date of course and course grade with status.';
+$string['usertableheading']='User Report Table';
+$string['usertabletxt']='This table will display the User Report it contains user`s name,emailid,course with it`s enrollment and completion date,course grade and status.';
+$string['allcoursetableheading']='All Course Report';
+$string['allcoursetabletxt']='This table will display the all courses Report.';
+$string['allusertableheading']='All User Report.';
+$string['allusertabletxt']='This table will display the all User`s Report. ';
 $string['sitereport']='Site Report';
+$string['noties']='*';
+$string['viewpage']='View details';
 $string['userreport']='User Report';
 $string['coursereport']='Course Report';
 $string['selectlocation']='Select Location';
 $string['selectcategory']='Select Category';
+$string['selectrole']='Select Role';
+$string['selectdepartment']='Select Department';
 $string['selectuser']='Select User';
 $string['selectcourse']='Select Course';
 $string['enrolledcourses']='Enrolled Courses';
@@ -34,7 +59,13 @@ $string['preview']='Preview';
 $string['current']='Current';
 $string['next']='Next';
 $string['exceldownload']='Excel Download';
+$string['action']='Action';
+$string['userfullnameasc']='Username Asc';
+$string['tblcoursenameasc']='Coursename Asc';
+$string['useremailasc']='Email Asc';
 
 //scheduled task.
 $string['deptrpts']='Department Report';
+$string['report']='Report';
+
 
